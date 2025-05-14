@@ -12,7 +12,7 @@ Each SQL query includes notes specifying its intended use case, such as:
 
 ---
 
-# Compatibility
+ Compatibility
 
 Each package includes:
 
