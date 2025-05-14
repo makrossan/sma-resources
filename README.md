@@ -12,9 +12,9 @@ Each SQL query includes notes specifying its intended use case, such as:
 
 ---
 
-## Compatibility
+# Compatibility
 
-Each query includes:
+Each package includes:
 
 - ✅ The SMA version it was created for  
 - 🔄 Whether it has been tested or verified on newer versions  
