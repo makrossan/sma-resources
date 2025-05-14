@@ -10,9 +10,8 @@ Each SQL query includes notes specifying its intended use case, such as:
 - Troubleshooting  
 - Other Administrative Tasks  
 
----
 
- Compatibility
+## Compatibility
 
 Each package includes:
 
@@ -21,7 +20,6 @@ Each package includes:
 
 This helps ensure proper usage in different environments.
 
----
 
 ## ⚠️ Disclaimer
 
@@ -33,7 +31,6 @@ Some of the queries were partially assisted by AI tools. However, I have persona
 
 By accessing and using this repository, you agree that you are solely responsible for any outcomes resulting from the use of the provided information.
 
----
 
 ## Contributions
 
