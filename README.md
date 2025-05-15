@@ -23,15 +23,15 @@ This helps ensure proper usage in different environments.
 
 ## Import packages
 
-1. Make sure "Enable file sharing" is enabled: Settings / Control Panel / Security Settings / Samba
-2. ⁠⁠Setup a password. Note: username is admin
+1. Make sure **Enable file sharing** is enabled: `Settings / Control Panel / Security Settings / Samba`
+2. ⁠⁠Setup a password. Note: username is **admin**
 3. Paste the resources to SMB path:
-	1. From Windows //<your-sma-ip>/clientdrop 
-	2. From Linux smb://<your-sma-ip>/clientdrop 
-4. Log in to the admin UI of the target SMA: https://<your-sma-ip>/admin
-5. Go to Settings / Resources
-6. In Choose Action, pick Import Resource(s) from Samba Share.
-7. Tick the resources you want and click Import Resources.
+	1. From Windows `//<your-sma-ip>/clientdrop`
+	2. From Linux `smb://<your-sma-ip>/clientdrop`
+4. Log in to the admin UI of the target SMA: `https://<your-sma-ip>/admin`
+5. Go to `Settings / Resources`
+6. In Choose Action, pick **Import Resource(s) from Samba Share.**
+7. Tick the resources you want and click **Import Resources**
 
 
 ## ⚠️ Disclaimer
