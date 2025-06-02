@@ -1,0 +1,124 @@
+zabbix_export:
+  version: '7.2'
+  template_groups:
+    - uuid: f75ac5b7ec4f4ec792f9b0ab6a3f7b10
+      name: 'KACE Appliances'
+  templates:
+    - uuid: e515215614684578b4bceb70c194b33e
+      template: 'KACE Appliances'
+      name: 'KACE Appliances'
+      description: 'This template is created with SNMP RFC1213 and HOST-RESOURCES-MIB
+        for KACE Appliances. It is designed to monitor the KACE Appliances using SNMP.
+        The template includes items for monitoring swap usage, storage usage, memory,
+        CPU idle time, MAC address, and system uptime.'
+      groups:
+        - name: 'KACE Appliances'
+      items:
+        - uuid: 344790369ed24707a40f171f7233c1d1
+          name: 'Swap used'
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.2.1.25.2.3.1.6.10
+          key: hrStorageUsed.10.swap
+          trends: '0'
+          units: MB
+          description: 'The blocks are 4 KB (4096 bytes) by default, I am converting the raw block count into megabytes.'
+          preprocessing:
+            - type: MULTIPLIER
+              parameters:
+                - '0.00390625'
+        - uuid: f93e57434a37403f81d37266ecc94067
+          name: /kbox
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.25.2.3.1.6.31
+          key: hrStorageUsed.31.kbox
+          trends: '0'
+          units: GB
+          description: 'The blocks are 4 KB (4096 bytes) by default, I am converting the raw block count into megabytes.'
+          preprocessing:
+            - type: MULTIPLIER
+              parameters:
+                - '3.814697265625E-6'
+        - uuid: a0064fe0bc954156a81d0d29525f368e
+          name: /
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.25.2.3.1.6.33
+          key: hrStorageUsed.33.root
+          trends: '0'
+          units: MB
+          description: 'The blocks are 4 KB (4096 bytes) by default, I am converting the raw block count into megabytes.'
+          preprocessing:
+            - type: MULTIPLIER
+              parameters:
+                - '0.00390625'
+        - uuid: a39c0aa939ad4a409e98bbd0807fc6ab
+          name: /usr
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.25.2.3.1.6.34
+          key: hrStorageUsed.34.usr
+          trends: '0'
+          units: MB
+          description: 'The blocks are 4 KB (4096 bytes) by default, I am converting the raw block count into megabytes.'
+          preprocessing:
+            - type: MULTIPLIER
+              parameters:
+                - '0.00390625'
+        - uuid: da0c48e4d3b8401391c06aebd6c9fea3
+          name: /tmp
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.25.2.3.1.6.36
+          key: hrStorageUsed.36.tmp
+          trends: '0'
+          units: MB
+          description: 'The blocks are 4 KB (4096 bytes) by default, I am converting the raw block count into megabytes.'
+          preprocessing:
+            - type: MULTIPLIER
+              parameters:
+                - '0.00390625'
+        - uuid: c9b25fafd8dc45e9a75a1fd34991a554
+          name: /var
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.25.2.3.1.6.37
+          key: hrStorageUsed.37.var
+          trends: '0'
+          units: MB
+          description: 'The blocks are 4 KB (4096 bytes) by default, I am converting the raw block count into megabytes.'
+          preprocessing:
+            - type: MULTIPLIER
+              parameters:
+                - '0.00390625'
+        - uuid: e0747e628f2844899a817fc074237887
+          name: 'Memory available'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.2021.4.6.0
+          key: memAvailReal.0
+          trends: '0'
+          units: GB
+          description: 'The blocks are 4 KB (4096 bytes) by default, I am converting the raw block count into megabytes.'
+        - uuid: 4fc4325fc4374dc0b97550ec114d26e3
+          name: 'Memory total'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.2021.4.5.0
+          key: memTotalReal.0
+          trends: '0'
+          units: GB
+          description: 'The blocks are 4 KB (4096 bytes) by default, I am converting the raw block count into megabytes.'
+        - uuid: be80a718772048da9b03ddce77678eb3
+          name: 'MAC address'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.2.2.1.6.1
+          key: physaddress
+          value_type: TEXT
+        - uuid: 504141194b2b46a1a27cf6559a83998c
+          name: 'CPU Idle'
+          type: SNMP_AGENT
+          snmp_oid: ssCpuIdle.0
+          key: ssCpuIdle.0
+          trends: '0'
+          units: '%'
+          description: 'The blocks are 4 KB (4096 bytes) by default, I am converting the raw block count into megabytes.'
+        - uuid: 40a1b2c88b4249d284e2b7d9dbac4406
+          name: 'System Uptime'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.1.3.0
+          key: sysUpTime.0
+          units: uptime
