@@ -5,15 +5,24 @@ zabbix_export:
       name: 'KACE Appliances'
   templates:
     - uuid: e515215614684578b4bceb70c194b33e
-      template: 'KACE Appliances'
-      name: 'KACE Appliances'
-      description: 'This template is created with SNMP RFC1213 and HOST-RESOURCES-MIB
-        for KACE Appliances. It is designed to monitor the KACE Appliances using SNMP.
-        The template includes items for monitoring swap usage, storage usage, memory,
-        CPU idle time, MAC address, and system uptime.'
+      template: KACE_Appliances
+      name: KACE_Appliances
+      description: 'This template is created with SNMP RFC1213 MIB'
       groups:
         - name: 'KACE Appliances'
       items:
+        - uuid: e2dc2785aae9457fbb9518952cf09028
+          name: '/var total'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.2.1.25.2.3.1.5.37
+          key: hrStorageTotal.37.var
+          trends: '0'
+          units: MB
+          description: 'El bloque es de 4 KB (4096 bytes) por defecto, convierto en megabytes.'
+          preprocessing:
+            - type: MULTIPLIER
+              parameters:
+                - '0.00390625'
         - uuid: 344790369ed24707a40f171f7233c1d1
           name: 'Swap used'
           type: SNMP_AGENT
@@ -122,3 +131,9 @@ zabbix_export:
           snmp_oid: .1.3.6.1.2.1.1.3.0
           key: sysUpTime.0
           units: uptime
+  triggers:
+    - uuid: e11b516efc934889a2e625968efcb581
+      expression: (last(/KACE_Appliances/hrStorageUsed.37.var)/last(/KACE_Appliances/hrStorageTotal.37.var))>0.8
+      name: 'KACE low /var partition'
+      priority: HIGH
+      description: 'Uso de /var > 80 %'
