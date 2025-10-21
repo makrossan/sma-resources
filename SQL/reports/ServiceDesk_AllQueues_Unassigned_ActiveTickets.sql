@@ -26,6 +26,7 @@
 -- Assumptions:
 --   • Unassigned means OWNER_ID IS NULL or 0.
 --   • Status names are exactly "Closed" and "Process Complete".
+--   • Admin is responsible for adjusting for additional status in the state of "Closed" 
 --   • Service Process status is shown only for parent tickets that use processes.
 --   • Run as an SQL report not bound to a single queue.
 --
